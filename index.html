@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QIQB 共同研究先企業 合同説明会</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --accent: #2d7fc1;
+      --accent-light: #e8f4fd;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #0f766e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #0f2a44 100%);
+      color: #fff;
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .hero .subtitle {
+      margin-top: 12px;
+      font-size: 1.05rem;
+      opacity: .88;
+    }
+    .hero .dates {
+      margin-top: 20px;
+      display: inline-flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero .dates span {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 40px;
+      padding: 6px 22px;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Sections */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 24px;
+      padding-left: 14px;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 28px 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .card + .card { margin-top: 20px; }
+
+    /* Schedule tables */
+    .venue-group { margin-bottom: 32px; }
+    .venue-group:last-child { margin-bottom: 0; }
+    .venue-label {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      padding: 8px 16px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .schedule-table th,
+    .schedule-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .schedule-table th {
+      background: var(--accent-light);
+      font-weight: 600;
+      color: var(--primary);
+      font-size: .9rem;
+    }
+    .schedule-table th:first-child { border-radius: 8px 0 0 0; }
+    .schedule-table th:last-child { border-radius: 0 8px 0 0; }
+    .schedule-table .time-cell {
+      font-weight: 700;
+      white-space: nowrap;
+      color: var(--accent);
+    }
+    .schedule-table .company-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .schedule-table .company-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: .88rem;
+      font-weight: 600;
+      background: #eef2ff;
+      color: var(--primary);
+    }
+    .schedule-table .joint-note {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Map */
+    .map-wrap {
+      margin-top: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .map-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .info-item {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .info-item .label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+    .info-item .value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, var(--accent) 0%, #1b6cad 100%);
+      color: #fff;
+      border-radius: 14px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+    .cta-box p { margin-bottom: 20px; font-size: 1.05rem; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 44px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.18);
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--accent-light);
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: center;
+    }
+    .contact-box .email {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--primary);
+      word-break: break-all;
+    }
+    .contact-box .atmark {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .card { padding: 20px 16px; }
+      .schedule-table th,
+      .schedule-table td { padding: 12px 10px; }
+      .hero { padding: 48px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Hero ====== -->
+<header class="hero">
+  <h1>QIQB 共同研究先企業<br>合同説明会</h1>
+  <p class="subtitle">量子に興味がある学生・ポスドクの皆さん、企業と直接話せる絶好の機会です</p>
+  <div class="dates">
+    <span>7/16（木）</span>
+    <span>7/17（金）</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ====== 概要 ====== -->
+  <section>
+    <h2 class="section-title">開催概要</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">対象者</div>
+        <div class="value">量子に興味がある学生・ポスドク</div>
+      </div>
+      <div class="info-item">
+        <div class="label">開催日時</div>
+        <div class="value">7月16日（木）・17日（金）</div>
+      </div>
+      <div class="info-item">
+        <div class="label">服装</div>
+        <div class="value">カジュアル</div>
+      </div>
+      <div class="info-item">
+        <div class="label">参加のメリット</div>
+        <div class="value">量子人材を求めています</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 開催趣旨 ====== -->
+  <section>
+    <h2 class="section-title">開催趣旨</h2>
+    <div class="card">
+      <p>QIQB（量子情報・量子生命研究センター）のクラウドチームが共同研究している企業による、学生・ポスドク向けの合同会社説明会です。</p>
+      <p style="margin-top:12px;">量子技術に興味がある方、研究開発の最前線で活躍する企業と直接話ができるまたとない機会です。ぜひお気軽にご参加ください。</p>
+    </div>
+  </section>
+
+  <!-- ====== タイムスケジュール ====== -->
+  <section>
+    <h2 class="section-title">タイムスケジュール</h2>
+
+    <div class="venue-group">
+      <div class="venue-label">🏛 豊中共創棟 A</div>
+      <div class="card">
+        <table class="schedule-table">
+          <thead>
+            <tr><th>時間</th><th>会場</th><th>企業</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell">13:00 – 16:00</td>
+              <td>A棟7階 共通講義室3・4</td>
+              <td>
+                <div class="company-tags">
+                  <span class="company-tag">KDDI</span>
+                  <span class="company-tag">TIS</span>
+                  <span class="company-tag">セック</span>
+                  <span class="company-tag">富士通</span>
+                </div>
+                <div class="joint-note">4社合同での開催です</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="venue-group">
+      <div class="venue-label">🏛 豊中共創棟 B</div>
+      <div class="card">
+        <table class="schedule-table">
+          <thead>
+            <tr><th>時間</th><th>会場</th><th>企業</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell">15:00 – 16:00</td>
+              <td>B棟4階 会議室</td>
+              <td>
+                <div class="company-tags">
+                  <span class="company-tag">QubitCore</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">16:00 – 17:00</td>
+              <td>B棟7階 会議室</td>
+              <td>
+                <div class="company-tags">
+                  <span class="company-tag">Yaqumo</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 場所 ====== -->
+  <section>
+    <h2 class="section-title">会場</h2>
+    <div class="card">
+      <p style="font-weight:600; margin-bottom:4px;">〒560-0043 大阪府豊中市待兼山町1-2</p>
+      <p>豊中共創棟 A・B</p>
+      <div class="map-wrap">
+        <img src="img/mao.png" alt="豊中共創棟 案内図">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 参加申込 ====== -->
+  <section>
+    <h2 class="section-title">参加申込</h2>
+    <div class="cta-box">
+      <p>参加をご希望の方は、以下のフォームからお申し込みください。</p>
+      <a class="cta-btn" href="https://forms.gle/EV2TrRj56J7gtmPo7" target="_blank" rel="noopener">
+        申込フォームへ →
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== お問い合わせ ====== -->
+  <section>
+    <h2 class="section-title">お問い合わせ</h2>
+    <div class="contact-box">
+      <p style="margin-bottom:8px;">ご質問・お問い合わせはこちらまで</p>
+      <p class="email">
+        t.mori.qiqb <span class="atmark">@</span> osaka-u.ac.jp
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>QIQB（量子情報・量子生命研究センター）</p>
+</footer>
+
+</body>
+</html>
